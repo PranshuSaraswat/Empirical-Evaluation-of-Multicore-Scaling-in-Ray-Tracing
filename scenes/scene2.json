@@ -1,0 +1,41 @@
+{
+  "objects": [
+    {
+      "type": "sphere",
+      "center": [-1.5, 0, -6],
+      "radius": 1,
+      "color": [0, 0, 255],
+      "reflect": 0.2
+    },
+    {
+      "type": "sphere",
+      "center": [1.5, 0, -6],
+      "radius": 1,
+      "color": [0, 255, 0],
+      "reflect": 0.2
+    },
+    {
+      "type": "sphere",
+      "center": [0, -1.5, -4],
+      "radius": 0.8,
+      "color": [255, 255, 0],
+      "reflect": 0.1
+    }
+  ],
+  "lights": [
+    {
+      "position": [5, 5, 0],
+      "intensity": 1.2
+    },
+    {
+      "position": [-3, 4, -2],
+      "intensity": 0.6
+    }
+  ],
+  "camera": {
+    "look_from": [0, 0, 0],
+    "look_at": [0, 0, -6],
+    "up": [0, 1, 0],
+    "fov": 60
+  }
+}

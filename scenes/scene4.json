@@ -1,0 +1,33 @@
+{
+  "objects": [
+    { "type": "sphere", "center": [0, -1004, -10], "radius": 1000, "color": [200, 200, 200], "reflect": 0.0 },
+
+    { "type": "sphere", "center": [-3, 1, -8], "radius": 1.2, "color": [255, 80, 80], "reflect": 0.3 },
+    { "type": "sphere", "center": [3, 1, -8], "radius": 1.2, "color": [80, 255, 80], "reflect": 0.3 },
+    { "type": "sphere", "center": [0, 1, -8], "radius": 1.2, "color": [80, 80, 255], "reflect": 0.3 },
+
+    { "type": "sphere", "center": [-4, -0.5, -6], "radius": 0.8, "color": [255, 255, 80], "reflect": 0.1 },
+    { "type": "sphere", "center": [4, -0.5, -6], "radius": 0.8, "color": [255, 80, 255], "reflect": 0.1 },
+
+    { "type": "sphere", "center": [-2, -0.2, -4], "radius": 0.6, "color": [80, 255, 255], "reflect": 0.2 },
+    { "type": "sphere", "center": [2, -0.2, -4], "radius": 0.6, "color": [255, 180, 80], "reflect": 0.2 },
+
+    { "type": "sphere", "center": [0, -0.8, -5], "radius": 0.5, "color": [255, 255, 255], "reflect": 0.6 },
+    { "type": "sphere", "center": [-1.2, -0.9, -7], "radius": 0.5, "color": [200, 200, 255], "reflect": 0.4 },
+    { "type": "sphere", "center": [1.2, -0.9, -7], "radius": 0.5, "color": [255, 200, 200], "reflect": 0.4 },
+
+    { "type": "sphere", "center": [0, 2, -12], "radius": 1.5, "color": [120, 120, 255], "reflect": 0.2 }
+  ],
+
+  "lights": [
+    { "position": [8, 10, 0], "intensity": 1.2 },
+    { "position": [-10, 4, -5], "intensity": 0.8 }
+  ],
+
+  "camera": {
+    "look_from": [0, 1, 0],
+    "look_at": [0, 0, -8],
+    "up": [0, 1, 0],
+    "fov": 55
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "objects": [
+    {
+      "type": "sphere",
+      "center": [0, 0, -5],
+      "radius": 1,
+      "color": [255, 0, 0],
+      "reflect": 0.2
+    }
+  ],
+  "lights": [
+    {
+      "position": [5, 5, 0],
+      "intensity": 1.0
+    }
+  ],
+  "camera": {
+    "look_from": [0, 0, 0],
+    "look_at": [0, 0, -5],
+    "up": [0, 1, 0],
+    "fov": 60
+  }
+}

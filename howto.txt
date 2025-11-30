@@ -1,0 +1,245 @@
+
+
+
+How to run — step-by-step
+
+Create and activate a virtualenv (optional but recommended):
+
+python -m venv venv
+source venv/bin/activate   # Linux/macOS
+venv\Scripts\activate      # Windows
+pip install -r requirements.txt
+
+
+Run a single sequential render (fast testing):
+
+python raytracer.py --scene scenes/scene1.json --width 800 --height 600 --threads 1 --tile 16 --outfile results/out_seq_800x600.png
+# Look for: RENDER_TIME_MS: <ms>
+
+
+Run a single parallel render (e.g., 8 processes):
+
+python raytracer.py --scene scenes/scene1.json --width 1920 --height 1080 --threads 8 --tile 16 --outfile results/out_par_1920x1080_t8.png
+
+
+Batch-run experiments (produces results/results.csv and output images):
+
+python run_experiments.py --scene scenes/scene1.json --out results/results.csv (only till here) --threads 1,2,4,8,16 --res 640x360,1280x720,1920x1080 --tile 16 --repeats 3
+
+
+Adjust --res to include 3840x2160 if you want 4K (be prepared for long renders).
+
+Generate plots:
+
+python plot_results.py --csv results/results.csv --outdir plots --threads 16
+
+
+Compare sequential vs parallel images:
+
+python compare_images.py results/out_1920x1080_t1_tile16_r0.png results/out_1920x1080_t16_tile16_r0.png
+
+
+(if filenames differ, use the actual generated names from results.csv)
+
+
+
+
+Ray Tracing — Sequential vs Parallel (CPU)
+HOW TO RUN THE PROJECT
+
+This guide explains how to run:
+
+The sequential renderer
+
+The parallel renderer
+
+The full benchmarking experiments
+
+The plot/graph generator
+
+Optional image comparison
+
+All commands below are meant to be executed in a terminal inside the project folder.
+
+---------------------------------------------
+1. Setup (Run Once)
+---------------------------------------------
+1.1. Activate virtual environment
+
+Windows:
+
+venv\Scripts\activate
+
+
+Linux/Mac:
+
+source venv/bin/activate
+
+1.2. Install required packages
+pip install -r requirements.txt
+
+---------------------------------------------
+2. Run a Single Sequential Render
+---------------------------------------------
+
+This renders the image using 1 thread (sequential CPU execution).
+
+python raytracer.py --scene scenes/scene1.json --width 800 --height 600 --threads 1 --outfile results/seq_test.png
+
+
+Expected:
+
+You will see RENDER_TIME_MS: <ms>
+
+Output saved at:
+results/seq_test.png
+
+---------------------------------------------
+3. Run a Single Parallel Render
+---------------------------------------------
+
+This uses multiple CPU processes for faster rendering.
+
+python raytracer.py --scene scenes/scene1.json --width 800 --height 600 --threads 8 --outfile results/par_test.png
+
+
+You can use:
+
+--threads 1, 2, 4, 8, 16
+
+
+Output saved at:
+
+results/par_test.png
+
+---------------------------------------------
+4. Run Full Experiments (Benchmark Suite)
+---------------------------------------------
+
+This automatically runs:
+
+Different resolutions
+
+Different thread counts
+
+Multiple repeats
+
+Saves all images
+
+Produces results.csv for analysis
+
+Run:
+
+python run_experiments.py --scene scenes/scene1.json --out results/results.csv
+
+
+This will:
+
+Render at resolutions:
+640×360, 1280×720, 1920×1080
+
+Test threads:
+1, 2, 4, 8, 16
+
+Repeat each config 3 times
+
+Save all images in results/
+
+The file:
+
+results/results.csv
+
+
+contains raw data for:
+
+Execution time
+
+Threads
+
+Resolution
+
+Output file
+
+Full program output
+
+You will use this CSV to generate graphs.
+
+---------------------------------------------
+5. Generate All Required Graphs
+---------------------------------------------
+
+Run:
+
+python plot_results.py --csv results/results.csv --outdir plots --threads 16
+
+
+This produces:
+
+A) Time vs Threads (per resolution)
+plots/time_vs_threads_<WxH>.png
+
+B) Speedup vs Threads
+plots/speedup_vs_threads_<WxH>.png
+
+C) Efficiency vs Threads
+plots/efficiency_vs_threads_<WxH>.png
+
+D) Time vs Resolution
+plots/time_vs_resolution_threads16.png
+
+
+These graphs are IEEE-paper ready.
+
+---------------------------------------------
+6. Compare Sequential vs Parallel Images (Optional)
+---------------------------------------------
+
+To check correctness:
+
+python compare_images.py results/seq_test.png results/par_test.png
+
+
+If outputs match:
+
+IDENTICAL
+
+
+Otherwise it prints:
+
+Max per-channel diff: <value>
+
+
+A small difference (0–3) is normal.
+
+---------------------------------------------
+7. Output Files to Include in IEEE Paper
+---------------------------------------------
+Images
+
+Sequential output:
+out_<resolution>_t1_*.png
+
+Parallel output:
+out_<resolution>_t16_*.png
+
+Graphs
+
+Located in plots/:
+
+Time vs Threads
+
+Speedup vs Threads
+
+Efficiency vs Threads
+
+Time vs Resolution
+
+Tables
+
+Generated from results.csv:
+
+Execution time (median)
+
+Speedup
+
+Efficiency
